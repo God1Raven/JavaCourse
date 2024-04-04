@@ -1,4 +1,4 @@
-package Task10.personrepository;
+package Task10.repository;
 
 import Task10.entity.Person;
 
@@ -9,29 +9,29 @@ import java.util.List;
 
 public class DirectoryPersonRepository implements Repository<Person> {
 
-    private final File dir;
+    private final File file;
 
-    public DirectoryPersonRepository(File dir){
-        this.dir = dir;
+    public DirectoryPersonRepository(File file){
+        this.file = file;
 
-        if(!dir.exists()){
-            dir.mkdirs();
+        if(!file.exists()){
+            file.mkdirs();
         }
 
-        if (!dir.isDirectory()){
-            throw new IllegalArgumentException("Govno");
+        if (!file.isDirectory()){
+            throw new IllegalArgumentException("");
         }
     }
 
     @Override
     public void save(Person person) throws IOException {
-        File file = new File(dir.getPath() + "/" + person.getId());
+        File file = new File(this.file.getPath() + "/" + person.getId());
         Person.saveTo(file, person);
     }
 
     @Override
     public Person load(int id) throws IOException {
-        File file = new File(dir.getPath() + "/" + id);
+        File file = new File(this.file.getPath() + "/" + id);
         return Person.loadFrom(file);
     }
 

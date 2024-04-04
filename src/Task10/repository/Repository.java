@@ -1,4 +1,4 @@
-package Task10.personrepository;
+package Task10.repository;
 
 import java.io.IOException;
 import java.util.List;

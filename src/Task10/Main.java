@@ -28,7 +28,7 @@ public class Main {
             System.out.println("Напишите email пользователя");
             String email = sc.nextLine();
 
-            Person person = new Person(id);
+            entity.Person person = new entity.Person(id);
             person.setName(name);
             person.setLastName(lastName);
             person.setEmail(email);
